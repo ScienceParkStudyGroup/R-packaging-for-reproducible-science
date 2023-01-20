@@ -1,18 +1,18 @@
 ---
 layout: workshop      # DON'T CHANGE THIS.
-venue: "Introduction to Google Earth Engine"        # brief name of host site without address 
-address: "Online course"      # full street address of workshop 
+venue: "R-packages for reproducible science"        # brief name of host site without address 
+address: "On campus"      # full street address of workshop 
 country: "nl"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes)
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
 latitude: "52"     # decimal latitude of workshop venue (use https://www.latlong.net/)
 longitude: "4"    # decimal longitude of the workshop venue (use https://www.latlong.net)
 humandate: "Thursday 1 July 2021"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
 humantime: "9:30-17:00"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
-startdate: 2021-07-01      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
-enddate: 2021-07-01        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
+startdate: 2023-03-01      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
+enddate: 2023-03-01        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
 instructor: ["Johannes De Groeve"] # boxed
-helper: ["Zsophia Koma", "Stacy Shinneman"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
-email: ["s.shinneman@uva.nl"]    # boxed, comma-separated list of contact email addresses for the host
+helper: ["Bart Kranstauber"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+email: ["j.degroeve@uva.nl"]    # boxed, comma-separated list of contact email addresses for the host
 eventbrite:           # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
 ---
 
@@ -179,43 +179,48 @@ To make the table bigger or smaller, adjust the number in <div class="col-md-##"
   <div class="col-md-12">
     <table class="table center">
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/00-access-javascript/"> GEE Access and JavaScript Tips</a> </td>
-        <td>How do I get an account? <br> What are some JavaScript basics?
+        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/00-before_the_course/"> github/gitlab account/configuration and R-Tips </a> </td>
+        <td> How do I create a github/gitlab account and configure git for R?
         </td>
         </tr>
       <tr> 
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/01-introduction/"> Introduction to Google Earth Engine </a> </td>
-        <td>What is Google Earth Engine? <br>What are the strengths and limitations of this platform?
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-01-introduction/"> Introduction to R-packaging for reproducible science </a> </td>
+        <td>
         </td>
         </tr>
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/02-code-editor/"> Code Editor </a> </td>
-        <td>What are the key features of the online code editor? <br>Where can I go for help while learning GEE? <br>How do I search for and import datasets? How do I create, share and save scripts?
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-02-code-editor/"> Code Editor </a> </td>
+        <td> How do I use the rstudio interface? What do I need to know about the interface when making R-packages?
         </td>
         </tr>
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/03-load-imagery/"> Accessing Satellite Imagery </a> </td>
-        <td>How do I acquire satellite imagery at regional scales? <br>How can I make image mosaics? <br>How can I use vector data? <br>How do I export images?
+        <td><a href="https://scienceparkstudygroup.github.io//R-packaging-for-reproducible-science/RP-03-basic-rpackage/"> Basic R-package </a> </td>
+        <td> How do I create a minimum viable R-package? 
         </td>
         </tr>
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/04-reducers/"> Temporal and Spatial Reducers </a> </td>
-        <td>How do I aggregate a time series of raster data over a time period? <br>How do I summarize data by vector regions? <br>How do I export tabular data summaries?
+        <td><a href="https://scienceparkstudygroup.github.io//R-packaging-for-reproducible-science/RP-04-Roxygen/"> Function documentation: Roxygen </a> </td>
+        <td> How do I add documentation to my functions?  
         </td>
         </tr>
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/05-classify-imagery/"> Supervised Classification of Satellite Imagery </a> </td>
-        <td>What machine learning techniques are available in GEE? <br>How do I perform supervised classification of satellite imagery? <br>How do I assess the accuracy of my        classifier? <br>How do I create my own geometries manually?
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-05-Data/"> Supervised Classification of Satellite Imagery </a> </td>
+        <td> How do I add data to my R-package?
         </td>
         </tr>
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/06-time-series/"> Time Series </a> </td>
-        <td>How do I create a time series for a given location? <br>How can I plot that time series within Google Earth Engine? <br>How do I make that plot interactive?
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-06-Vignettes/"> vignettes </a> </td>
+        <td> How do I add vignettes to my R-package?
         </td>
         </tr>
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/07-wrap-up/"> Wrap-Up </a> </td>
-        <td> What are the most important GEE resources? <br>Where do I find answers to my questions about GEE? <br>What is happening under the hood in Earth Engine?
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-07-github-gitlab/"> github-gitlab </a> </td>
+        <td> How do I version control my R-package?
+        </td>
+        </tr>
+       <tr>
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-08-website/"> Website </a> </td>
+        <td> How to create a website for my R-package?
         </td>
         </tr>
     </table>
