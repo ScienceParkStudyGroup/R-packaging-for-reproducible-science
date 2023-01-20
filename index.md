@@ -179,13 +179,13 @@ To make the table bigger or smaller, adjust the number in <div class="col-md-##"
   <div class="col-md-12">
     <table class="table center">
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/00-before_the_course/"> github/gitlab account/configuration and R-Tips </a> </td>
+        <td><a href="https://scienceparkstudygroup.github.io/GoogleEarthEngine/00-before_the_course/"> github/gitlab configuration and R-Tips </a> </td>
         <td> How do I create a github/gitlab account and configure git for R?
         </td>
         </tr>
       <tr> 
-        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-01-introduction/"> Introduction to R-packaging for reproducible science </a> </td>
-        <td>
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-01-introduction/"> Introduction </a> </td>
+        <td> Introduction to R-packaging for reproducible science.
         </td>
         </tr>
       <tr>
