@@ -6,7 +6,7 @@ country: "nl"      # lowercase two-letter ISO country code such as "fr" (see htt
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
 latitude: "52"     # decimal latitude of workshop venue (use https://www.latlong.net/)
 longitude: "4"    # decimal longitude of the workshop venue (use https://www.latlong.net)
-humandate: "Thursday 1 July 2021"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
+humandate: "Thursday X March 2023"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
 humantime: "9:30-17:00"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
 startdate: 2023-03-01      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
 enddate: 2023-03-01        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
@@ -100,7 +100,7 @@ address.
 </p> 
 
 <p id="rooms">
-  <strong>Online course:</strong> We will meet using Zoom. Each session will begin in the main room with a short presentation by the instructor to help you get started with the module. Participants will then go to breakout rooms to work together on the module in groups of 2-3. Instructors and helpers will be available at all times for questions and problem solving. Like other Carpentries workshops, you will be learning by "coding along". To do this, you will need to have both the window for R and the window for the Zoom video conference client open. In order to see both at once, we recommend using one of the following set up options: 1) two monitors, 2) two devices, or 3) divide your screen. This <a href="https://carpentries.org/blog/2020/06/online-workshop-logistics-and_screen-layouts/">blog post</a> includes detailed information on how to set up your screen to follow along during the workshop.
+  <strong>In-person course:</strong> We will meet using Zoom. Each session will begin in the main room with a short presentation by the instructor to help you get started with the module. Participants will then go to breakout rooms to work together on the module in groups of 2-3. Instructors and helpers will be available at all times for questions and problem solving. Like other Carpentries workshops, you will be learning by "coding along". To do this, you will need to have both the window for R and the window for the Zoom video conference client open. In order to see both at once, we recommend using one of the following set up options: 1) two monitors, 2) two devices, or 3) divide your screen. This <a href="https://carpentries.org/blog/2020/06/online-workshop-logistics-and_screen-layouts/">blog post</a> includes detailed information on how to set up your screen to follow along during the workshop.
 </p> 
 
 {% comment %}
