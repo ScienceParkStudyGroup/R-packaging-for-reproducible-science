@@ -1,294 +1,201 @@
 ---
-title: "Code Editor"
-teaching: 5
+source: Rmd  
+title: "Navigating RStudio and R Markdown Documents"  
+teaching: 20
 exercises: 10
 questions:
-- "What are the key features of the online code editor?"
-- "Where can I go for help while learning GEE?"
-- "How do I search for and import datasets?"
-- "How do I create, share and save scripts?"
+- How do you find your way around RStudio?
+- How do you start an R Markdown document in Rstudio?
+- How is an R Markdown document configured and how do I work with it?
 objectives:
-- Get oriented to the tools available in the code editor
-- Load an image collection and filter it to a relevant image
-- Create a study area using Geometry tools
+- Understand key functions in Rstudio.
+- Learn about the structure of a Rmarkdown file.
+- Understand the workflow of an R Markdown file.
 keypoints:
-- "The Code Editor is a one stop shop for accessing GEE data catalog and conducting geospatial analysis."
-- "You can use the code editor to develop, share and manage scripts."
-- "You can use the code editor to import, export, share and manage your own personal raster and vector datasets"
-- "Use the Docs tab, Example scripts and the HELP button to access the User Guides and Help Forum"
-
+- RStudio has four panes to organize your code and environment.
+- Manage packages in RStudio using specific functions.
+- R Markdown documents combine text and code.
 ---
 
-# Code Editor Overview
+## Introduction 
 
-GEE has an integrated development environment (IDE) called the Code Editor. The Code Editor has number of features to help make programming in this environment easier that we will explore in this tutorial. For an exhaustive description see the <a href="https://developers.google.com/earth-engine/playground#api-reference-docs-tab" target="_blank">Earth Engine Code Editor help page</a>
-in the GEE User Guides.  
+R packages give you a structure to organize your research project in a 
+standardized manner. In essence, an R-package is a hyper-organized 
+R-project of documented functions, datasets and markdown files. A 
+prerequisite to facilitate creating an R-package is basic knowledge 
+of Rstudio. While R-studio is not necessary to create an R-package, 
+it does make it easier.
 
+## Getting Around RStudio
 
+We'll be using RStudio: a free, open source R Integrated Development Environment
+(IDE). It provides a built in editor, works on all platforms
+(including on servers) and provides many advantages such as integration with
+version control and project management.
 
-Link to the full code we used in this lesson:
-<a href="https://code.earthengine.google.com/926160c96272a205b91b5ed7b68981ab" target="_blank">https://code.earthengine.google.com/926160c96272a205b91b5ed7b68981ab</a>
+This lesson assumes you already have a basic understanding of R and RStudio but
+we will do a brief tour of the IDE, review R projects and the best practices for
+organizing your work, and how to install packages you may want to use to work
+with R Markdown.
 
+**Basic layout**
 
-# Exercise: Exploring the Code Editor
+When you first open RStudio, you will be greeted by three panels:
 
-## 1. Getting Started
+-   The interactive R console/Terminal (entire left)
+-   Environment/History/Connections (tabbed in upper right)
+-   Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
-**To access the Code Editor, type the following url into your browser: <a href="https://code.earthengine.google.com" target="_blank">https://code.earthengine.google.com</a>.** A webpage programming interface like the one below should appear. The diagram below has annotations pointing to many of the functionalities we will cover today.
+![RStudio layout](../fig/02-rstudio.PNG)
 
-<br>
-<img src="../fig/02_codeeditor.png" border = "10">
-<br><br>
+Once you open files, such as .Rmd files or .R files, an editor panel will also
+open in the top left.
 
-#### The JavaScript Code Editor window
+![RStudio layout with .R file open](../fig/02-rstudio-script.PNG)
 
-Javascript code is typed in this window. The Editor also has a few helper functions, including autocomplete for Earth Engine functions, autocompletion for brackets, etc and some basic underlining and syntax hints.
+### R Packages
 
-For example, you can write comments by using a double slash. Type the following into your Editor and click the "Run" button.
+It is possible to add functions to R by writing a package, or by obtaining a
+package written by someone else. As of this writing, there are over 10,000
+packages available on CRAN (the comprehensive R archive network). R and RStudio
+have functionality for managing packages:
 
-{% highlight javascript %}
-// This is just a comment.
-{% endhighlight %}
+-   You can *install packages* by typing `install.packages("packagename")`, where `packagename` is the package name, in quotes.
+-   You can *see what packages* are installed by typing `installed.packages()`
+-   You can *update installed packages* by typing `update.packages()`
+-   You can *remove a package* with `remove.packages("packagename")`
+-   You can *make a package available* for use with `library(packagename)`
 
-#### The Console tab
+Packages can also be viewed, loaded, and detached in the Packages tab of the
+lower right panel in RStudio. Clicking on this tab will display all of installed
+packages with a checkbox next to them. If the box next to a package name is
+checked, the package is loaded and if it is empty, the package is not loaded.
+Click an empty box to load that package and click a checked box to detach that
+package.
 
-You can also use `print()` to display things to the console. Type this and click "Run":
+Packages can be installed and updated from the Package tab with the *Install* and
+*Update* buttons at the top of the tab. We have asked you to install a few packages prior to the workshop following the [setup instructions](https://github.com/UCSBCarpentry/Reproducible-Publications-with-RStudio/blob/main/setup.md) using the `install.packages()` command. Let's now make sure you have all of them good to go.
 
-{% highlight javascript %}
-// Print something to the console
-print("Hola Mundo!");
-{% endhighlight %}
+> ## CHALLENGE 2.1 - Checking for Installed Packages
+> Which command would you use to check for packages ready for use?
+>> ## SOLUTION
+>> To see what packages are installed, use the `installed.packages()` command. This will return a matrix with a row for each package that has been installed.
+> {: .solution}
+{: .challenge}
 
-#### Autosuggestions
+## Starting a R project 
 
-The Editor will mark statements as incomplete **`i`** if you write them without a semicolon at the end. You can control these autosuggestions by going to the little grey wheel in the top right of the page and turning them on or off.
+Whether you want to create an R-package or not, it is always a good idea to organize
+your research that is part of a single work-package (e.g. a publication,
+a presentation) into an R-project (and to use functions for tasks that can
+be repeated). The R-project is assigned to a root directory. So every time you open
+that R project, you know that the path where the '.rproject' file is stored will be 
+your working directory. An R-project can be assigned to a new directory or to an already
+existing directory.
 
-{% highlight javascript %}
-print("Hola Mundo!");
-{% endhighlight %}
 
-<br>
+> ## CHALLENGE 2.2 - Create an R-project 
+> Open a new rstudio editor and create an R-project. Check the working directory
+>> ## SOLUTION
+>> getwd()
+> {: .solution}
+{: .challenge}
 
+## Starting a R Markdown File
 
-## 2. Saving & Sharing Scripts
+Start a new R Markdown document in RStudio by clicking File \> New File \> R Markdown...
 
-#### Saving Scripts
+![Opening a new R Markdown document](../fig/02-file-navigation-rmd.PNG)
 
-Save scripts by clicking the **Save** button. To include a commit message, use the dropdown arrow and select "Save with a description."  Messages are stored in the revision history of each saved script.
+> ## Tip: Bonus! Note about R Notebooks:
+You may have noticed that the menu offers the option to create an R Notebook, which is essentially an interactive execution mode for R Markdown documents. Technically, R Markdown is a file, whereas R Notebook is a way to work with R Markdown files. R Notebooks do not have their own file format, they all use `.Rmd`. All R Notebooks can be 'knitted' to R Markdown outputs, and all R Markdown documents can be interfaced as a Notebook.
+{: .callout}
 
-<br>
-<img src="../fig/02_getlink.png" border = "10" width="75%" height="75%" >
-<br><br>
+If this is the first time you have ever opened an R Markdown file a dialog box
+will open up to tell you what packages need to be installed. You shouldn't see the dialog box if you installed these packages before the workshop.
 
-*Note: If you didn't make any changes to the script, the* **Save** *button will be greyed out.*
+For a mac:
+![First time R Markdown install packages dialog box mac](../fig/02-install-rmd-pkg-mac.png)
 
-If you look at the top left panel, you can see the script is now saved in your **Scripts** manager. You have four categories of scripts: owner, reader, writer and examples. Each script is backed up on Git. If you move your mouse over the name of the script, three icons will pop up that allow you to revert to older versions, rename or delete the script. You can also make folders and click and drags scripts into those directories.
+For windows:
 
-*Note/Warning: If you rename a script, it's revision history disappears.*
+![First time R Markdown install packages dialog box windows](../fig/02-install-rmd-pkg-win.png)
 
-#### Sharing Scripts
-You can share a static version of scripts by clicking **Get Link**. A url will appear in your browser address field. Share this link to give other people access to your code *as it is.* If you continue to make edits on this code, they will not update in the linked version. This option is useful to share examples and code snapshots with others.
 
-    **Hot Tip: When posted on the help forum, ALWAYS include a link to your code so people can help troubleshoot. Be sure all personal assets you use are publicly shared so the script will run for others.**
+Click "Yes". The packages will take a few seconds (to a few minutes) to install.
+You should see that each package was installed successfully in the dialog box.
 
-#### Joining the shared repository
+Once the package installs have completed, a dialog box will pop up and ask you
+to name the file and add an author name (may already know what your name is) The default output is HTML and as the wizard indicates, it is the best way to start and in your final version or later versions you have the option of changing to pdf or word document (among many other output formats! We'll see this later).
 
-To collaborate interactively on shared scripts with other users, you can create a shared folder, invite your collaborators and place scripts in that folder. We have created a shared folder for GEE_SPSG_2021.
+### Naming your new R Markdown Document
 
-You should have already accessed the shared code repository in the Code Editor with the following steps:
+![Name new .Rmd file](../fig/02-name-new-rmd.PNG)
 
-  -  <a href="https://code.earthengine.google.com/?accept_repo=users/johannesdegroeve/GEE_SPSG_2021
-" target="_blank">https://code.earthengine.google.com/?accept_repo=users/johannesdegroeve/GEE_SPSG_2021</a>
-  - In the code editor, go to the **Scripts tab** in the top left panel, scroll down and expand the "owner" section. A directory called *GEE_SPSG_2021* should appear with read-only versions of the full scripts from each episode.
+New R Markdown files will have a generic template unless you click the
+"Create Empty Document" in the bottom left-hand corner of the dialog box.
 
-Any updates will be reflected in these versions of the code. Like all GEE scripts, these are version controlled. Read or write permissions for individuals or groups can be set in the Code Editor using the little grey share icon that appears to the right if you move your mouse over the directory name in the *Scripts* tab. You should have read-only access to this repo.
+Note that you have the option to select *Use the current date when rendering the document*. If you choose so, this will generate the date dynamically each time you knit your document and replace the rmd creation date with the inline R expression: "\`r Sys.Date()\`". You may also consider exploring changing date formats [following these tips](https://bookdown.org/yihui/rmarkdown-cookbook/update-date.html).
 
-<br>
+If you see this default text you're good to go: ![.Rmd new file generic template](../fig/02-rmd-new-template.PNG)
 
-## 3. Accessing Datasets from Google's Cloud
+### Visual Editor vs. Source Editor
 
-#### Search toolbar: Finding datasets and loading them as `ImageCollections`
+RStudio released a new major update to their IDE in January 2020, which includes a new "visual editor" for R Markdown to supplement their original editor (which we will call the source editor) for authoring with R Markdown syntax. The new visual editor is friendlier with a graphical user interface similar to Word or Google docs that lets you choose styling options from the menu (before you had to either have the R Markdown code memorized or look it up for each of your styling choices). Another major benefit is that the new editor renders the R Markdown styling in real time so you can preview your paper before rendering to your output format.
 
-To query the <a href="https://code.earthengine.google.com/datasets/" target="_blank">GEE data catalog</a>, you can enter key words into the search toolbar at the top of the code editor.
+#### Source Editor
 
-For practice, let's load some imagery into the code editor. We are going to search for and import the **Landsat Top of the Atmosphere (TOA) Reflectance Collection 1 Tier 1** product.
-  - To do this, go to the *Search* toolbar and type in **Landsat 8 tier 1 TOA**.
-  - Select the dataset - USGS Landsat 8 Collection 1 Tier 1 TOA Reflectance - by clicking on the name. This will bring up the metadata for this data collection. You can confirm you got the correct one because the `ImageCollection ID` should say **LANDSAT/LC08/C01/T1_TOA**
-  - Now, click **Import** in this pop out. A new variable (`ImageCollection`) will load into your Code Editor in the "Imports" pane at the top of the code editor.
-  - Rename this object "landsat8Collection". This object is an `ImageCollection`, which means it is a stack of images. Notice we have to declare this object using *var*. If you click the little blue square icon above the collection, a pop-out will appear showing the code you just created.
+The image below displays the default R Markdown template in the "source editor" mode. Notice the symbols scattered throughout the text (#, *, <>). Those are examples of R Markdown syntax, which is a flavor of Markdown syntax, an easy and quick, human-readable markup language for document styling.
 
-{% highlight javascript %}
-var landsat8Collection = ee.ImageCollection("LANDSAT/LC08/C01/T1_TOA")
-{% endhighlight %}
+![Add image source editor](../fig/02-rmd-new-template.PNG)  
 
-In order to look at the collection, try to print it just like you did the string.
 
-{% highlight javascript %}
-print(landsat8Collection);
-{% endhighlight %}
+> ## CHALLENGE 2.2 - Formatting with Symbols (optional)
+> In Rmd certain symbols are used to denote formatting that should happen to the text (after we "knit" or render). Before we knit, these symbols will show up seemingly "randomly" throughout the text and don't contribute to the narrative in a logical way. In the template Rmd document, there are three types of such symbols (##, **, <>) . Each symbol represents a different kind of formatting (think of your text formatting buttons you use in Word). Can you deduce from the surrounding text how these symbols format the surrounding text?  
+> ```
+> ## R Markdown
+>
+> This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+>
+> When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+> ```
+>> ## SOLUTION
+>> `##` is a heading, `**` is to bold enclosed text, and `<>` is for hyperlinks.
+>> Don't worry about this too much right now! This is an example of R Markdown syntax for styling, you won't need it if you stick to the visual editor, but it is recommended to get at least a basic understanding of R Markdown syntax if you plan to work with `.Rmd` documents frequently.
+> {: .solution}
+{: .challenge}
 
-**What happens?**
+#### Switch to the visual editor
 
-Earth Engine times out - this means your request is too big, which makes sense as there are thousands of images in the Landsat 8 collection. To get around this, try the following:
+The new visual editor is accessible through a small button on the far right side of the script/document pane in RStudio. The icon is a protractor, but from further away it just looks like a squiggly "A". See the image below to find the visual editor button, it isn't the most obvious!
 
-{% highlight javascript %}
-print(landsat8Collection.limit(5))
-{% endhighlight %}
+![change to visual editor](../fig/02-visual-editor-spotlight.png)  
 
-This will show you just the first five images so you can preview the collection. You can see the collection ID, the bands, the features, which are the images in the collection and the properties, which is the metadata.
+Thankfully, the newer versions of RStudio (2022 onward), have made it easier to find the button to change to visual mode:
 
-*Note: The developers are always adding great new functionalities to the GUI so we don't have to code. As a result, sometimes there will be a point-and-click method to do something that can also be accomplished by writing a line or two of code. The 'import' function is a great example of this because you can import a collection using either the "Import" button on the metadata or the 'ImageCollection' command written in JavaScript. Same thing, two ways.*
+![new visual editor](../fig/02-visual-editor-updated.png)
 
-#### Selecting a study area using Geometry Tools
+#### Visual Editor
 
-The geometry drawing tools located on the upper left side of the map viewer can be used to manually create points, line or polygons. We are now going to define a study area using a point we select on the map. We will use the **Geometry Tools** to create that point.
+We've already touched on the visual editor and it's useful features, but now that we've switched to the visual editor take another look at your document and see what's changed.
+You'll notice that formatting elements like headings, hyperlinks and bold have been generated automatically, giving us a preview of how our text will render. However, the visual editor does not run any code automatically, we'll have to do that manually (but we will learn how to do that later on).
 
-1. Type "Lake Powell, AZ" into the search toolbar and hit enter. This will zoom you to Lake Powell in Arizona, USA.
-2. On the left side of the map, click the little marker icon. Your cursor should then turn into crosshairs.
-3. Toggle around the map and drop the pin in the center of the lake, which is right next to Lee Vining.
-4. Now, go to the Geometry Imports window that has now appeared. In that window, name the point "roi" and change the dropdown from **Geometry** to **FeatureCollection**.
+![Add image visual editor](../fig/02-visual-editor.PNG)  
 
-You have now created a new point object and cast it as a `FeatureCollection`. You can now use this  `FeatureCollection` as a way to geographically filter datasets for just your region.
+We will proceed using the visual editor during this workshop as it is more
+user-friendly and allows us to talk about styling without needing to teach the
+whole R Markdown syntax system. However, we highly encourage you to become
+familiar with markdown syntax (specifically the R Markdown flavor) as it
+increases your abilities to format and style your paper without relying on the
+visual editor options.
 
-<br>
-<img src="../fig/02_lakePowell.png" border = "10">
-<br><br>
 
+> ## Tip: Resources to learn R Markdown  
+> if you want to learn how to use the source editor (as we call it) please see
+> the the [Pandoc Markdown Documentation](https://pandoc.org/MANUAL.html#philosophy).
+> You will need to know Markdown formatting (specifically R-flavored Markdown).       
+{: .callout}
 
-Having fun? You can further explore how to configure geometries in the <a href="https://geohackweek.github.io/GoogleEarthEngine/05-classify-imagery/" target="_blank">Classifying Imagery</a> section of this tutorial.  
 
-
-#### Filtering the Image Collection
-
-One of the major benefits of the JavaScript versus Python API is the ability to quickly render on-the-fly geovisualizations of your imagery and outputs. We are now going to visualize one image from the Landsat 8 collection.
-
-We are going to filter the collection down to one image by:
-
-  - filtering it to our study area we defined with a point
-  - filtering it down to just one year of images (2018)
-  - sorting the images by the overall cloud cover (least cloudy to most cloudy)
-  - picking the top image (least cloudy)
-
-Essentially, this allows us to sort through the full Landsat 8 collection and load the best image available for our region of interest for 2018.
-
-{% highlight javascript %}
-// Load Landsat 8 input imagery
-var image = ee.Image((landsat8Collection)
-    // Filter to get only images under the region of interest.
-    .filterBounds(lakePowell)
-    // Filter to get only one year of images.
-    .filterDate('2018-01-01', '2018-12-31')
-    // Select just the optical bands
-    .select(['B[1-7]'])
-    // Sort by scene cloudiness, ascending.
-    .sort('CLOUD_COVER')
-    // Get the first (least cloudy) scene.
-    .first());
-
-{% endhighlight %}
-
-Use a print statement to check out what we just made:
-
-{% highlight javascript %}
-print(image, 'Lake Powell L8 image')
-{% endhighlight %}
-
-We have now filtered the ENTIRE Landsat 8 archive down to the least cloudy image for our study area in 2018. However, we still need to visualize it, which we will do using the `Map.addLayer` function.
-
-*Note: Not sure what this function does? Search for it in the* **Docs** *tab to learn the arguments.*
-
-{% highlight javascript %}
-Map.addLayer(image,{},  'L8 Image');
-{% endhighlight %}
-
-#### Layer Manager
-
-That doesn't look so great. Let's actually define what bands to use and fill in some other visualization parameters using the layer manager. We will use reflectance in the visible range from the red (Band 4), the green (Band 3) and the blue (Band 2) to make a true color image.  We can use prior knowledge to make a nice image:
-
-{% highlight javascript %}
-Map.addLayer(image, {bands: ['B4', 'B3', 'B2'], max: 0.5, gamma: 2}, 'Better L8 Image');
-{% endhighlight %}
-
-More often then not, though, you may not know the optimal min, max and stretch. This is why they added the **Layer Manager** tool which can be found in the upper right hand corner of the map. This toolbar will allow you to click layers on and off as well as adjust their transparency and interactively configure each layer's visualization parameters. You can use this tool to figure out what parameters to pass to the `Map.addLayer`.
-
-<br>
-<img src="../fig/02_layermanager.png" border = "10">
-<br><br>
-
-You can also toggle between the **Map** or **Satellite** buttons in the top right of the map panel to change the baselayer.
-
-For more on image visualization, see the <a href="https://developers.google.com/earth-engine/image_visualization" target="_blank">GEE Visualization Guide</a> or the <a href="https://developers.google.com/earth-engine/tutorial_api_02" target="_blank">GEE Visualization tutorial</a>
-
-
-#### Inspector Tab
-
-Another way you can inspect and explore your image is through the inspector tool. The Inspector console allows you to interactively query the map. If you have imagery loaded, it will give you information about that imagery at the point you clicked as well.
-
-In the upper right, switch to the **Inspector** tab and click on the map where there is land. Now click where there is water. Toggle the between the graph and the list of values.
-
-## STOP & PLAY
-
-On your own, play with the stretch parameters and use the Inspector to explore the map, clicking between land, bare earth, forest and water.
-
-If you already did that, you can play with dropping the point somewhere else and looking at a different image of your favorite place.
-
-You could also change the dates to look at a winter time image and see how the reflectance changes when there is snow on the ground.
-
-
-## 4. Getting Help
-
-There are many entry points for getting help tucked into the Code Editor. Familiarizing yourself with these tools can help soften the learning curve.
-
-#### API reference (Docs tab)
-
-Next to the **Scripts** tab is the **Docs** tab, which has the complete, searchable JavaScript API documentation for every function and call. The documentation is organized by GEE data type. Each data type has a specific set of functions that can be applied to it.
-
-#### Help Button
-
-The **Help** button is a gateway to many resources, including links to:
-
- - the <a href="https://developers.google.com/earth-engine/" target="_blank">**Developers Guide**</a>
-for official GEE tutorials, reference and guides. This is the first place I go when I need to look up how to write some code.
-
- - the **Help Forum** where you can post questions and get answers. If I can't find a guide for my specific question on the GEE Guides, I then go search for key words from my problem/question on the forum. Since people share links to their codes, you can often find great examples of solutions here.
-
- -  <a href="https://developers.google.com/earth-engine/tutorials" target="_blank">Existing tutorials</a> and the <a href="https://developers.google.com/earth-engine/edu" target="_blank">Earth Engine for Higher Education resources</a> written by the GEE team and others (even some in Japanese!)
-
- - A list of keyboard shortcuts
-
- - links to the **Suggest a Dataset** page
-
-#### Examples in the **Shared Scripts**
-
-A final place you can get help is by scrolling down and looking at the examples housed in the **Shared Scripts** in the **Scripts** tab.  
-
-<br>
-
-## 5. Importing & Exporting Your Own Assets
-
-#### Importing Images and Tables
-Besides using all of Google's amazing archives, users can also import their own data as either images (rasters) or tables (vectors). The **Assets** tab on the left is where you can import, share and manage these own assets. You can upload images or tables (vector data) here.
-
-When posting on the forum, make sure you check the "Anyone Can Read" box on the sharing assets pop-out so folks on the forum can all run your code. If you have a private asset and you don't make it public, other people will not be able to run your code. If you don't want to share your private data, you can create a dummy example to share on the forums using hand drawn points or polygons.
-
-<br>
-<img src="../fig/02_sharingassets.png" border = "10">
-<br><br>
-
-For an example script that uses imported data, see <a href="https://geohackweek.github.io/GoogleEarthEngine/06-time-series/" target="_blank">Episode 06 Time Series</a>. For detailed instructions from Google on uploading, sharing and managing assets, see the <a href="https://developers.google.com/earth-engine/asset_manager" target="_blank">Assets Manager page</a> on the GEE website .
-
-
-
-#### Exporting & the Tasks Tab
-Instead of printing to the console, for larger tasks you may want to just export the outputs to your Google Drive or Cloud Storage using the `Export` functions in your code. When run, these generate a new task in the `Task` tab in the upper right panel. You will need to then "Run" this task in order to actually start the export. Once you start an export task, you will be prompted to enter details about the resolution, size, format and destination if you did not include this in your code. You can hover your mouse over the task and click the "?" icon to see the status and also to get the task number. If your task isn't executing, you can share this number as a reference on the developers forum.
-
-We will do an example table export in <a href="https://geohackweek.github.io/GoogleEarthEngine/03-load-imagery/" target="_blank">Episode 3: Load Imagery</a> of this tutorial.
-
-For detailed instructions on exports, see the <a href="https://developers.google.com/earth-engine/exporting" target="_blank">Exporting Data page</a> on the GEE website. We will also have small export examples in subsequent modules of this tutorial.
-
-<br>
-<br>
-
-
-
-### Enjoy!!!
+Now we'll get into how our R Markdown file & workflow is organized and then on
+to editing and styling!
