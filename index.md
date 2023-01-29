@@ -189,7 +189,7 @@ To make the table bigger or smaller, adjust the number in <div class="col-md-##"
         </td>
         </tr>
       <tr>
-        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-02-code-editor/"> Code Editor </a> </td>
+        <td><a href="https://scienceparkstudygroup.github.io/R-packaging-for-reproducible-science/RP-02-rstudio-editor/index.html"> Code Editor </a> </td>
         <td> How do I use the rstudio interface? What do I need to know about the interface when making R-packages?
         </td>
         </tr>
